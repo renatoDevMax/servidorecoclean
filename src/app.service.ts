@@ -21,7 +21,18 @@ export class AppService {
           '--no-zygote',
           '--single-process',
           '--disable-gpu',
+          '--disable-infobars',
+          '--window-position=0,0',
+          '--ignore-certificate-errors',
+          '--ignore-certificate-errors-spki-list',
+          '--disable-extensions',
+          '--disable-features=site-per-process',
+          '--enable-features=NetworkService',
+          '--allow-running-insecure-content',
+          '--disable-web-security',
         ],
+        executablePath: process.env.CHROME_BIN || undefined,
+        browserWSEndpoint: process.env.BROWSER_WSS || undefined,
       },
     });
 
