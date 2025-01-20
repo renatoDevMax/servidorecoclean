@@ -11,8 +11,11 @@ async function bootstrap() {
     credentials: true,
   });
 
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
+  // Modificar para garantir que a Railway possa injetar a porta correta
+  const port = Number(process.env.PORT) || 3000;
+  
+  // Adicionar host '0.0.0.0' para permitir conexões externas
+  await app.listen(port, '0.0.0.0');
   console.log(`Aplicação rodando na porta ${port}`);
 }
 bootstrap();

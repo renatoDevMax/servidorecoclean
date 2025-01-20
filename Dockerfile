@@ -12,11 +12,21 @@ RUN apt-get update \
 
 WORKDIR /app
 
+# Copiar arquivos de configuração primeiro
 COPY package*.json ./
+COPY tsconfig*.json ./
+
+# Instalar dependências
 RUN npm install
 
+# Copiar código fonte
 COPY . .
+
+# Construir a aplicação
 RUN npm run build
 
-EXPOSE 3000
+# Expor porta
+EXPOSE ${PORT}
+
+# Comando para iniciar
 CMD [ "npm", "run", "start:prod" ] 
