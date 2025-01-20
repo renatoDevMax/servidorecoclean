@@ -31,8 +31,7 @@ export class AppService {
           '--allow-running-insecure-content',
           '--disable-web-security',
         ],
-        executablePath: process.env.CHROME_BIN || undefined,
-        browserWSEndpoint: process.env.BROWSER_WSS || undefined,
+        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
       },
     });
 
